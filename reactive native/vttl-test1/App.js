@@ -50,7 +50,8 @@ function loadMeerdaal() {
     render() {
       var self = this;
       if (this.state.player != null) {
-        this.playerImageUri = this.computeImagePlayerUri(this.props);
+        this.playerImageUri = this.computeImagePlayerUri(this.state.player);
+        console.log(this.playerImageUri);
        return (
          <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 50}}>
            <Image
@@ -74,8 +75,16 @@ function loadMeerdaal() {
       }
     }
 
+    camelize(str) {
+      return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+        return index == 0 ? letter.toUpperCase() : letter.toLowerCase();
+      }).replace(/\s+/g, '');
+    }
+
     computeImagePlayerUri(playerProperties) {
-      return 'https://competitie.vttl.be/photos/1718/small/'+playerProperties.FirstName+'.'+playerProperties.LastName+'.'+playerProperties.UniqueIndex+'.jpg';
+      console.log("Player properties:");
+      console.log(playerProperties);
+      return 'https://competitie.vttl.be/photos/1718/small/'+this.camelize(playerProperties.FirstName)+'.'+this.camelize(playerProperties.LastName)+'.'+playerProperties.UniqueIndex+'.jpg';
     }
   }
 
