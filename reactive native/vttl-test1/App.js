@@ -17,15 +17,16 @@ function loadMeerdaal() {
 
 export default class App extends Component {
     render() {
-
-      // '522436' // Lander
+      // '520746' // Jolan
       // '522434' // Pieter
-     // '507015' // Vanja
-     // 524734 // Jesse
+      // '522435' // Maarten
+      // '522436' // Lander
+      // '507015' // Vanja
+      // 524734 // Jesse
 
       return (
         <View>
-           <Player playerId="522436"/>
+           <Player playerId="522435"/>
         </View>
       );
     }

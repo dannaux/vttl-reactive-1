@@ -71,11 +71,6 @@ export default class Player extends Component {
     var self = this;
     if (this.state.player != null) {
       this.playerImageUri = this.computeImagePlayerUri(this.state.player);
-      console.log(self.state.player.RankResults);
-
-      Object.keys(self.state.player.RankResults).map( (field) =>
-        console.log(field+" win: "+self.state.player.RankResults[field].win+", loss: "+self.state.player.RankResults[field].loss) );
-
      return (
        <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
          <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 50}}>
@@ -92,10 +87,10 @@ export default class Player extends Component {
          {Object.keys(self.state.player.RankResults).sort().reverse().map( (field) =>
            <View key={field} style={{flexDirection: 'row', alignItems: 'stretch', marginLeft: 20, marginTop: 10}}>
               <Text key={field+"-rank"} style={{ width: 30}}>{field} </Text>
-              <Text key={field+"-win"} style={{ width: 20 }}>{self.state.player.RankResults[field].win} </Text>
+              <Text key={field+"-win"} style={{ width: 20, textAlign: "right" }}>{self.state.player.RankResults[field].win} </Text>
               <View key={field+"-winbar"} style={{height: 20, width: 250*self.state.player.RankResults[field].win/(self.state.player.RankResults[field].win+self.state.player.RankResults[field].loss), backgroundColor: '#008000'}} />
               <View key={field+"-lossbar"} style={{height: 20, width: 250*self.state.player.RankResults[field].loss/(self.state.player.RankResults[field].win+self.state.player.RankResults[field].loss), backgroundColor: '#b30000'}} />
-              <Text key={field+"-loss"} style={{ width: 20, marginLeft: 3}}>{self.state.player.RankResults[field].loss} </Text>
+              <Text key={field+"-loss"} style={{ width: 40, marginLeft: 3, textAlign: "left"}}>{self.state.player.RankResults[field].loss}/{self.state.player.RankResults[field].win+self.state.player.RankResults[field].loss} </Text>
             </View>
          )}
        </View>
