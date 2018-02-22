@@ -21,10 +21,11 @@ export default class App extends Component {
       // '522436' // Lander
       // '522434' // Pieter
      // '507015' // Vanja
+     // 524734 // Jesse
 
       return (
         <View>
-           <Player playerId="522436"/>
+           <Player playerId="522434"/>
         </View>
       );
     }

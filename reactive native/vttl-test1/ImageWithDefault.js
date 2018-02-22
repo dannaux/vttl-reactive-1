@@ -20,9 +20,6 @@ export default class ImageWithDefault extends Component {
 
   render() {
     const defaultImage = <Image source={{uri: this.defaultUri}} style={this.props.style} />;
-    console.log("Failed to load image:")
-    console.log(this.state.failed);
-    console.log(this.defaultUri);
 
     if (this.state.failed) return defaultImage;
 
