@@ -90,10 +90,12 @@ export default class Player extends Component {
            </View>
          </View>
          {Object.keys(self.state.player.RankResults).sort().reverse().map( (field) =>
-           <View style={{flexDirection: 'row', alignItems: 'stretch', marginLeft: 20, marginTop: 10}}>
-              <Text key={field} style={{ width: 30}}>{field} </Text>
-              <View key={field+"-win"} style={{height: 20, width: 300*self.state.player.RankResults[field].win/(self.state.player.RankResults[field].win+self.state.player.RankResults[field].loss), backgroundColor: '#008000'}} />
-              <View key={field+"-loss"} style={{height: 20, width: 300*self.state.player.RankResults[field].loss/(self.state.player.RankResults[field].win+self.state.player.RankResults[field].loss), backgroundColor: '#b30000'}} />
+           <View key={field} style={{flexDirection: 'row', alignItems: 'stretch', marginLeft: 20, marginTop: 10}}>
+              <Text key={field+"-rank"} style={{ width: 30}}>{field} </Text>
+              <Text key={field+"-win"} style={{ width: 20 }}>{self.state.player.RankResults[field].win} </Text>
+              <View key={field+"-winbar"} style={{height: 20, width: 250*self.state.player.RankResults[field].win/(self.state.player.RankResults[field].win+self.state.player.RankResults[field].loss), backgroundColor: '#008000'}} />
+              <View key={field+"-lossbar"} style={{height: 20, width: 250*self.state.player.RankResults[field].loss/(self.state.player.RankResults[field].win+self.state.player.RankResults[field].loss), backgroundColor: '#b30000'}} />
+              <Text key={field+"-loss"} style={{ width: 20, marginLeft: 3}}>{self.state.player.RankResults[field].loss} </Text>
             </View>
          )}
        </View>

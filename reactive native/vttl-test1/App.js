@@ -25,7 +25,7 @@ export default class App extends Component {
 
       return (
         <View>
-           <Player playerId="522434"/>
+           <Player playerId="522436"/>
         </View>
       );
     }
