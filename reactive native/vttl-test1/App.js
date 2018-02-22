@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { Text, View, Image, Button } from 'react-native';
+import Player from './Player';
 
 function loadMeerdaal() {
   var soap = require('soap-everywhere');
@@ -14,103 +15,17 @@ function loadMeerdaal() {
     });
 }
 
-
-
-
-  export class Player extends Component {
-
-    loadPlayer(uniqueIndex: String) {
-      var self = this;
-      var soap = require('soap-everywhere');
-      var url = 'http://api.vttl.be/0.7/?WSDL';
-      var args = { Season: 18, UniqueIndex: uniqueIndex, WithResults: 'FALSE'};
-
-        soap.createClient(url, function(err, client) {
-            client.GetMembers(args, function(err, response) {
-                self.setState({ player: self.convertPlayerResponse(response) })
-            });
-        });
-    }
-
-    convertPlayerResponse(playerResponse) {
-      return playerResponse.MemberEntries[0]
-    }
-
-    constructor(props) {
-      super(props);
-      this.state = {
-        player: null
-      };
-    }
-
-    componentDidMount()  {
-      this.loadPlayer('522436');
-    }
-
+export default class App extends Component {
     render() {
-      var self = this;
-      if (this.state.player != null) {
-        this.playerImageUri = this.computeImagePlayerUri(this.state.player);
-        console.log(this.playerImageUri);
-       return (
-         <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 50}}>
-           <Image
-             style={{width: 200, height: 200}}
-            source={{uri: this.playerImageUri}}
-            />
-            <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
-             <Text style={styles.playerName}>{self.state.player.LastName}</Text>
-             <Text style={styles.playerName}>{self.state.player.FirstName}</Text>
-             <Text style={styles.ranking}>{self.state.player.Ranking}</Text>
-           </View>
-         </View>
-       );
-      }
-      else {
-        return (
-          <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 50}}>
-            <Text style={styles.playerName}>Loading player</Text>
-          </View>
-        );
-      }
-    }
 
-    camelize(str) {
-      return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
-        return index == 0 ? letter.toUpperCase() : letter.toLowerCase();
-      }).replace(/\s+/g, '');
-    }
+      // '522436' // Lander
+      // '522434' // Pieter
+     // '507015' // Vanja
 
-    computeImagePlayerUri(playerProperties) {
-      console.log("Player properties:");
-      console.log(playerProperties);
-      return 'https://competitie.vttl.be/photos/1718/small/'+this.camelize(playerProperties.FirstName)+'.'+this.camelize(playerProperties.LastName)+'.'+playerProperties.UniqueIndex+'.jpg';
-    }
-  }
-
-  export default class App extends Component {
-    render() {
       return (
         <View>
-           <Player LastName="Dannaux" FirstName="Lander" UniqueIndex="522436" Ranking="NG"/>
+           <Player playerId="522436"/>
         </View>
       );
     }
   }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  ranking: {
-    fontWeight: 'bold',
-    fontSize: 40
-  },
-  playerName: {
-    fontSize: 30
-  }
-});
