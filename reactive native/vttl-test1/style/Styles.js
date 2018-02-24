@@ -13,5 +13,8 @@ export const Styles = StyleSheet.create({
   },
   playerName: {
     fontSize: 30
+  },
+  matchen: {
+    fontSize: 20
   }
 });

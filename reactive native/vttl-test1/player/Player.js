@@ -43,6 +43,9 @@ export default class Player extends Component {
     var self = this;
     if (this.playerLoaded()) {
       this.playerImageUri = this.computeImagePlayerUri(this.state.player);
+      var numberMatches = Object.keys(self.state.player.RankResults).map( (rank) =>  self.state.player.RankResults[rank].win+self.state.player.RankResults[rank].loss );
+      var maxMatches = Math.max(...numberMatches);
+      var totalMatches = numberMatches.reduce( (a,b) => a+b, 0 );
      return (
        <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
          <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
@@ -54,10 +57,11 @@ export default class Player extends Component {
              <Text style={Styles.playerName}>{self.state.player.LastName}</Text>
              <Text style={Styles.playerName}>{self.state.player.FirstName}</Text>
              <Text style={Styles.ranking}>{self.state.player.Ranking}</Text>
+             <Text style={Styles.matchen}>{totalMatches} matchen</Text>
            </View>
          </View>
          {Object.keys(self.state.player.RankResults).sort().reverse().map( (field) =>
-           <RankBar key={field} ranking={field} win={self.state.player.RankResults[field].win} loss={self.state.player.RankResults[field].loss}/>
+           <RankBar key={field} maxmatches={maxMatches} ranking={field} win={self.state.player.RankResults[field].win} loss={self.state.player.RankResults[field].loss}/>
          )}
        </View>
      );
