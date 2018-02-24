@@ -3,78 +3,49 @@ import { Text, View, Image, Button } from 'react-native';
 import { Styles } from '../style/Styles';
 import ImageWithDefault from '../common/ImageWithDefault';
 import RankBar from './RankBar';
+import VTTLPlayerLoader from './VTTLPlayerLoader';
 
 export default class Player extends Component {
 
-  loadPlayer(uniqueIndex: String) {
-    var self = this;
-    var soap = require('soap-everywhere');
-    var url = 'http://api.vttl.be/0.7/?WSDL';
-    var args = { Season: 18, UniqueIndex: uniqueIndex, WithResults: 'TRUE'};
-
-      soap.createClient(url, function(err, client) {
-          client.GetMembers(args, function(err, response) {
-              self.setState({ player: self.convertPlayerResponse(response) })
-          });
-      });
+  constructor(props) {
+    super(props);
+    this.playerLoader = new VTTLPlayerLoader();
+    this.state = {
+      player: null,
+    };
   }
 
-  convertPlayerResponse(playerResponse) {
-    return this.convertPlayer(playerResponse.MemberEntries[0]);
+  componentDidMount() {
+    this.playerLoader.loadPlayer(this.props.playerId, this.updateStateForPlayer.bind(this) );
   }
 
-  convertPlayer(player) {
-    var self = this;
-    return {
-      FirstName: player.FirstName,
-      LastName: player.LastName,
-      Ranking: player.Ranking,
-      UniqueIndex: player.UniqueIndex,
-      RankResults: self.convertResults(player.ResultEntries)
+  componentWillReceiveProps(nextProps) {
+    if (this.props.playerId != nextProps.playerId) {
+      this.playerLoader.loadPlayer(nextProps.playerId, this.updateStateForPlayer.bind(this) );
     }
   }
 
-  convertResults(results) {
-    var accumulateResultPerRanking = (rankResults, result, index) => {
-      if (index == 1) {
-        rankResults = {};
-      }
-      if (rankResults[result.Ranking] == undefined) {
-        rankResults[result.Ranking] = {
-          win: 0,
-          loss: 0
-        };
-      }
-      if (result.Result == 'D' ) {
-        rankResults[result.Ranking].loss++;
-      }
-      else {
-        rankResults[result.Ranking].win++;
-      }
-      return rankResults;
-    };
-
-    return results.reduce(accumulateResultPerRanking);
+  updateStateForPlayer(player) {
+    this.setState({ player: player} );
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      player: null
-    };
-  }
+  toggleBool = () => {
+        if (this.state.isTrue === false)
+            return (true);
+        return (false);
+    }
 
-  componentDidMount()  {
-    this.loadPlayer(this.props.playerId); // Vanja
+  playerLoaded = () => {
+       return ( (this.state.player != null) && (this.state.player.UniqueIndex == this.props.playerId) );
   }
 
   render() {
     var self = this;
-    if (this.state.player != null) {
+    if (this.playerLoaded()) {
       this.playerImageUri = this.computeImagePlayerUri(this.state.player);
      return (
        <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
-         <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 50}}>
+         <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
            <ImageWithDefault
              style={{width: 200, height: 200, borderWidth: 3, borderColor: 'black'}}
             source={{uri: this.playerImageUri}}
