@@ -5,11 +5,9 @@ export default class RankBar extends Component {
 
   constructor(props) {
     super(props);
-    console.log("RankBar props:"+ this.props);
   }
 
   render() {
-    console.log("RankBar for: ["+this.props+"]");
      if (this.props.ranking != "") {
        return (
            <View key={this.props.ranking} style={{flexDirection: 'row', alignItems: 'stretch', marginLeft: 20, marginTop: 10}}>
