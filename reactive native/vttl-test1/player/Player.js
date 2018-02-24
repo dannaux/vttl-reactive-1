@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Text, View, Image, Button } from 'react-native';
-import { Styles } from './Styles';
-import ImageWithDefault from './ImageWithDefault';
+import { Styles } from '../style/Styles';
+import ImageWithDefault from '../common/ImageWithDefault';
 import RankBar from './RankBar';
 
 export default class Player extends Component {

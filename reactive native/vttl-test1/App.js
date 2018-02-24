@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Text, View, Image, Button } from 'react-native';
-import Player from './Player';
+import Player from './player/Player';
 
 function loadMeerdaal() {
   var soap = require('soap-everywhere');
@@ -26,7 +26,7 @@ export default class App extends Component {
 
       return (
         <View>
-           <Player playerId="520746"/>
+           <Player playerId="507015"/>
         </View>
       );
     }
