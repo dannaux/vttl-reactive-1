@@ -42,7 +42,7 @@ export default class Player extends Component {
        <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
          <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
            <ImageWithDefault
-             style={{width: 200, height: 200, borderWidth: 1, borderColor: 'black', borderRadius: 5}}
+             style={{width: 200, height: 200, borderWidth: 2, borderColor: 'white', borderRadius: 5}}
             source={{uri: this.playerImageUri}}
             />
             <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
@@ -61,7 +61,7 @@ export default class Player extends Component {
     else {
       return (
         <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 50}}>
-          <Text style={Styles.playerName}>Loading player</Text>
+          <Text style={[Styles.playerName, {color:'#808080'}]}>Loading player</Text>
         </View>
       );
     }

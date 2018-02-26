@@ -4,7 +4,7 @@ export const Styles = StyleSheet.create({
   container: {
     flexDirection: 'column', 
     alignItems: 'stretch', 
-    marginTop: 35, 
+    marginTop: 30, 
     marginLeft: 5, 
     marginRight: 5, 
     marginBottom: 5, 
@@ -25,7 +25,7 @@ export const Styles = StyleSheet.create({
     flex: 1,
   },
   playerButtonView: {
-    backgroundColor: '#3385ffd0',
+    backgroundColor: '#3385ffe0',
     borderRadius: 10,
     marginTop: 10
   },
