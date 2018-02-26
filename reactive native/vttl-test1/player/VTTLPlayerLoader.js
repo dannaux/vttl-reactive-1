@@ -9,7 +9,6 @@ export default class VTTLPlayerLoader {
       soap.createClient(url, function(err, client) {
           client.GetMembers(args, function(err, response) {
             let answer = self.convertPlayerResponse(response);
-            console.log("Player loaded");
             callBackFunction(answer);
           });
       });

@@ -2,10 +2,14 @@ import { StyleSheet } from 'react-native';
 
 export const Styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column', 
+    alignItems: 'stretch', 
+    marginTop: 35, 
+    marginLeft: 5, 
+    marginRight: 5, 
+    marginBottom: 5, 
+    backgroundColor: '#ffffffd0', 
+    borderRadius: 10 
   },
   ranking: {
     fontWeight: 'bold',
@@ -16,5 +20,20 @@ export const Styles = StyleSheet.create({
   },
   matchen: {
     fontSize: 20
+  },
+  backgroundImage: {
+    flex: 1,
+  },
+  playerButtonView: {
+    backgroundColor: '#3385ffd0',
+    borderRadius: 10,
+    marginTop: 10
+  },
+  playerButtonText: {
+    fontSize: 25,
+    marginLeft: 5,
+    marginRight: 5,
+    color: '#ffffff'
   }
+  
 });

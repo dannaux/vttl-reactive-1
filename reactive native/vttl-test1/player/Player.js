@@ -22,7 +22,6 @@ export default class Player extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.playerId != nextProps.playerId) {
       this.setState({ playerLoaded : false });
-      console.log("componentWillReceiveProps: "+ this.state.playerLoaded);
       this.playerLoader.loadPlayer(nextProps.playerId, this.updateStateForPlayer.bind(this) );
     }
   }
@@ -34,7 +33,6 @@ export default class Player extends Component {
 
   render() {
     var self = this;
-    console.log("Render: "+ this.state.playerLoaded);
     if ( this.state.playerLoaded == true ) {
       this.playerImageUri = this.computeImagePlayerUri(this.player);
       var numberMatches = Object.keys(self.player.RankResults).map( (rank) =>  self.player.RankResults[rank].win+self.player.RankResults[rank].loss );
@@ -44,7 +42,7 @@ export default class Player extends Component {
        <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
          <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
            <ImageWithDefault
-             style={{width: 200, height: 200, borderWidth: 1, borderColor: 'black'}}
+             style={{width: 200, height: 200, borderWidth: 1, borderColor: 'black', borderRadius: 5}}
             source={{uri: this.playerImageUri}}
             />
             <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>

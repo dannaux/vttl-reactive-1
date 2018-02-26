@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { Text, View, Image, Button } from 'react-native';
+import { Button, ImageBackground, Image, Text, View } from 'react-native';
 import Player from './player/Player';
-import { StyleSheet, Alert } from 'react-native';
+import PlayerButton from './common/PlayerButton';
+import { Styles } from './style/Styles';
 
 function loadMeerdaal() {
   var soap = require('soap-everywhere');
@@ -44,15 +45,17 @@ export default class App extends Component {
       var self = this;
 
       return (
-        <View style={{flexDirection: 'column', alignItems: 'stretch', marginTop: 50, marginLeft: 5, backgroundColor: '#fff7c0'}}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-around' }}>
-           <Button title="Jolan" onPress={this.changeToJolan.bind(self)} style={{backgroundColor: '#66ab8c'}}/>
-           <Button title="Pieter" onPress={this.changeToPieter.bind(self)}/>
-           <Button title="Maarten" onPress={this.changeToMaarten.bind(self)}/>
-           <Button title="Lander" onPress={this.changeToLander.bind(self)}/>
+        <ImageBackground source={require('./assets/batnet.jpg')} style={Styles.backgroundImage} >
+          <View style={Styles.container}>
+            <View style={{flexDirection: 'row', justifyContent: 'space-around' }}>
+            <PlayerButton title="Jolan" onPress={this.changeToJolan.bind(self)}/>
+            <PlayerButton title="Pieter" onPress={this.changeToPieter.bind(self)}/>
+            <PlayerButton title="Maarten" onPress={this.changeToMaarten.bind(self)}/>
+            <PlayerButton title="Lander" onPress={this.changeToLander.bind(self)}/>
+            </View>
+            <Player playerId={this.state.playerUniqueId}/>
           </View>
-          <Player playerId={this.state.playerUniqueId}/>
-        </View>
+        </ImageBackground>        
       );
     }
 }
