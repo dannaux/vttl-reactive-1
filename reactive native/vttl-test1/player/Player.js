@@ -11,7 +11,7 @@ export default class Player extends Component {
     super(props);
     this.playerLoader = new VTTLPlayerLoader();
     this.state = {
-      player: null,
+      playerLoaded : false
     };
   }
 
@@ -21,29 +21,23 @@ export default class Player extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.playerId != nextProps.playerId) {
+      this.setState({ playerLoaded : false });
+      console.log("componentWillReceiveProps: "+ this.state.playerLoaded);
       this.playerLoader.loadPlayer(nextProps.playerId, this.updateStateForPlayer.bind(this) );
     }
   }
 
   updateStateForPlayer(player) {
-    this.setState({ player: player} );
-  }
-
-  toggleBool = () => {
-        if (this.state.isTrue === false)
-            return (true);
-        return (false);
-    }
-
-  playerLoaded = () => {
-       return ( (this.state.player != null) && (this.state.player.UniqueIndex == this.props.playerId) );
+    this.player = player;
+    this.setState( { playerLoaded : true } );
   }
 
   render() {
     var self = this;
-    if (this.playerLoaded()) {
-      this.playerImageUri = this.computeImagePlayerUri(this.state.player);
-      var numberMatches = Object.keys(self.state.player.RankResults).map( (rank) =>  self.state.player.RankResults[rank].win+self.state.player.RankResults[rank].loss );
+    console.log("Render: "+ this.state.playerLoaded);
+    if ( this.state.playerLoaded == true ) {
+      this.playerImageUri = this.computeImagePlayerUri(this.player);
+      var numberMatches = Object.keys(self.player.RankResults).map( (rank) =>  self.player.RankResults[rank].win+self.player.RankResults[rank].loss );
       var maxMatches = Math.max(...numberMatches);
       var totalMatches = numberMatches.reduce( (a,b) => a+b, 0 );
      return (
@@ -54,14 +48,14 @@ export default class Player extends Component {
             source={{uri: this.playerImageUri}}
             />
             <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
-             <Text style={Styles.playerName}>{self.state.player.LastName}</Text>
-             <Text style={Styles.playerName}>{self.state.player.FirstName}</Text>
-             <Text style={Styles.ranking}>{self.state.player.Ranking}</Text>
+             <Text style={Styles.playerName}>{self.player.LastName}</Text>
+             <Text style={Styles.playerName}>{self.player.FirstName}</Text>
+             <Text style={Styles.ranking}>{self.player.Ranking}</Text>
              <Text style={Styles.matchen}>{totalMatches} matchen</Text>
            </View>
          </View>
-         {Object.keys(self.state.player.RankResults).sort().reverse().map( (field) =>
-           <RankBar key={field} maxmatches={maxMatches} ranking={field} win={self.state.player.RankResults[field].win} loss={self.state.player.RankResults[field].loss}/>
+         {Object.keys(self.player.RankResults).sort().reverse().map( (field) =>
+           <RankBar key={field} maxmatches={maxMatches} ranking={field} win={self.player.RankResults[field].win} loss={self.player.RankResults[field].loss}/>
          )}
        </View>
      );

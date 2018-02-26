@@ -1,17 +1,15 @@
 export default class VTTLPlayerLoader {
 
-  loadPlayer(uniqueIndex: String, callBack) {
+  loadPlayer(uniqueIndex: String, callBackFunction, ) {
     var self = this;
     var soap = require('soap-everywhere');
     var url = 'http://api.vttl.be/0.7/?WSDL';
     var args = { Season: 18, UniqueIndex: uniqueIndex, WithResults: 'TRUE'};
-    var callBackFunction = callBack;
 
       soap.createClient(url, function(err, client) {
           client.GetMembers(args, function(err, response) {
-            console.log("Player loaded");
             let answer = self.convertPlayerResponse(response);
-            console.log("Answer:"+answer);
+            console.log("Player loaded");
             callBackFunction(answer);
           });
       });
