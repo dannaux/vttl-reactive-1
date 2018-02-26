@@ -9,9 +9,6 @@ export default class ImageWithDefault extends Component {
     this.state = {
       failed: false
     };
-
-    this.defaultUri = 'https://competitie.vttl.be/images/vttl/No_Photo_M.jpg';
-
   }
 
   _onError = () => {
@@ -19,7 +16,7 @@ export default class ImageWithDefault extends Component {
   }
 
   render() {
-    const defaultImage = <Image source={{uri: this.defaultUri}} style={this.props.style} />;
+    const defaultImage = <Image source={ require('../assets/unknown.jpg')} style={this.props.style} />;
 
     if (this.state.failed) return defaultImage;
 
