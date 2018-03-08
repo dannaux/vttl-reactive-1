@@ -34,6 +34,21 @@ export const Styles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
     color: '#ffffff'
+  },
+  homebutton: {
+    borderRadius: 10,
+    backgroundColor: '#3385ffe0',
+    width: 120,
+    height: 120, 
+    borderWidth: 2, 
+    borderColor: 'white',
+    marginTop: 10,
+    alignItems: 'flex-end'
+  },
+  homeButtonText: {
+    fontSize: 20,
+    marginLeft: 5,
+    marginRight: 5,
+    color: '#ffffff'
   }
-  
 });
