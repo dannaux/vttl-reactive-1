@@ -13,6 +13,8 @@ Find out about reactive to develop an app for table tennis
 > `sudo sysctl -w fs.inotify.max_user_instances=1024`
 >
 > `sudo sysctl -w fs.inotify.max_user_watches=12288`
+>
+> `sudo sysctl -w fs.inotify.max_queued_events=9999`
 5. Open your app in the [Expo app](https://expo.io/) using the QR code produced on the console line.
 > Note that these are handy at any time:
 >
@@ -38,3 +40,9 @@ Find out about reactive to develop an app for table tennis
 ## Useful links
 * [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 * [unknown image](https://github.com/oblador/react-native-image-progress/issues/22)
+
+## Tools used
+* Atom 
+* Visual Studio Code
+* MySQL Workbench
+

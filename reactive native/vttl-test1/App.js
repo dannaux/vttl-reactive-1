@@ -3,6 +3,7 @@ import { Button, ImageBackground, Image, Text, View } from 'react-native';
 import Player from './player/Player';
 import PlayerButton from './common/PlayerButton';
 import { Styles } from './style/Styles';
+import TrainerList from './trainer/TrainerList';
 
 function loadMeerdaal() {
   var soap = require('soap-everywhere');
@@ -53,9 +54,10 @@ export default class App extends Component {
             <PlayerButton title="Maarten" onPress={this.changeToMaarten.bind(self)}/>
             <PlayerButton title="Lander" onPress={this.changeToLander.bind(self)}/>
             </View>
-            <Player playerId={this.state.playerUniqueId}/>
+            {/* <Player playerId={this.state.playerUniqueId}/> */}
+            <TrainerList/>
           </View>
-        </ImageBackground>        
+        </ImageBackground>
       );
     }
 }
