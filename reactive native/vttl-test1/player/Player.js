@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Text, View, Image, Button } from 'react-native';
-import { Styles } from '../style/Styles';
+import { playerStyles } from '../style/Styles';
 import ImageWithDefault from '../common/ImageWithDefault';
 import RankBar from './RankBar';
 import VTTLPlayerLoader from './VTTLPlayerLoader';
@@ -46,10 +46,10 @@ export default class Player extends Component {
             source={{uri: this.playerImageUri}}
             />
             <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
-             <Text style={Styles.playerName}>{self.player.LastName}</Text>
-             <Text style={Styles.playerName}>{self.player.FirstName}</Text>
-             <Text style={Styles.ranking}>{self.player.Ranking}</Text>
-             <Text style={Styles.matchen}>{totalMatches} matchen</Text>
+             <Text style={playerStyles.playerName}>{self.player.LastName}</Text>
+             <Text style={playerStyles.playerName}>{self.player.FirstName}</Text>
+             <Text style={playerStyles.ranking}>{self.player.Ranking}</Text>
+             <Text style={playerStyles.matchen}>{totalMatches} matchen</Text>
            </View>
          </View>
          {Object.keys(self.player.RankResults).sort().reverse().map( (field) =>
@@ -61,7 +61,7 @@ export default class Player extends Component {
     else {
       return (
         <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 50}}>
-          <Text style={[Styles.playerName, {color:'#808080'}]}>Loading player</Text>
+          <Text style={[playerStyles.playerName, {color:'#808080'}]}>Loading player</Text>
         </View>
       );
     }

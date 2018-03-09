@@ -11,29 +11,8 @@ export const Styles = StyleSheet.create({
     backgroundColor: '#ffffffd0', 
     borderRadius: 10 
   },
-  ranking: {
-    fontWeight: 'bold',
-    fontSize: 40
-  },
-  playerName: {
-    fontSize: 30
-  },
-  matchen: {
-    fontSize: 20
-  },
   backgroundImage: {
     flex: 1,
-  },
-  playerButtonView: {
-    backgroundColor: '#3385ffe0',
-    borderRadius: 10,
-    marginTop: 10
-  },
-  playerButtonText: {
-    fontSize: 25,
-    marginLeft: 5,
-    marginRight: 5,
-    color: '#ffffff'
   },
   homebutton: {
     borderRadius: 10,
@@ -51,4 +30,35 @@ export const Styles = StyleSheet.create({
     marginRight: 5,
     color: '#ffffff'
   }
+});
+
+export const playerStyles = StyleSheet.create({
+  playerButtonView: {
+    backgroundColor: '#3385ffe0',
+    borderRadius: 10,
+    marginTop: 10
+  },
+  playerButtonText: {
+    fontSize: 25,
+    marginLeft: 5,
+    marginRight: 5,
+    color: '#ffffff'
+  },
+  playerName: {
+    fontSize: 30
+  },
+  matchen: {
+    fontSize: 20
+  },
+  ranking: {
+    fontWeight: 'bold',
+    fontSize: 40
+  },
+});
+
+export const trainerStyles = StyleSheet.create({
+  diploma: {
+    fontWeight: 'bold',
+    fontSize: 30
+  },
 });

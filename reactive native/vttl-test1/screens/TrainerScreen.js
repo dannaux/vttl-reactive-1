@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { Button, ImageBackground, Image, Text, View } from 'react-native';
-import Player from '../player/Player';
+import Trainer from '../trainer/Trainer';
 import { Styles } from '../style/Styles';
 
-export default class PlayerScreen extends Component {
+export default class TrainerScreen extends Component {
 
     constructor(props) {
       super(props);
@@ -13,12 +13,14 @@ export default class PlayerScreen extends Component {
       var self = this;
 
       const { params } = this.props.navigation.state;      
-      const vttlId = params ? params.vttlId : null;
+      const trainerId = params ? params.trainerId : null;
+
+      console.log( 'TrainerScreen: trainer id = '+trainerId);
 
       return (
         <ImageBackground source={require('../assets/batnet.jpg')} style={Styles.backgroundImage} >
           <View style={Styles.container}>
-            <Player playerId={vttlId}/>
+            <Trainer trainerId={trainerId}/>
           </View>
         </ImageBackground>
       );

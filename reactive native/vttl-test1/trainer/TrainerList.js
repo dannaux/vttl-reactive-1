@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
 import { AppRegistry, StyleSheet, FlatList, Text, View, ScrollView, Alert, ActivityIndicator, Platform} from 'react-native';
+import { IPAddress } from '../common/Constants';
 
 class TrainerList extends Component {
 
-
-    
   constructor(props) {
     super(props);
     this.state = {
@@ -14,14 +13,16 @@ class TrainerList extends Component {
   }
 
   componentDidMount() {
-     return fetch('http://192.168.0.99:9000/trainerlist.php')
+     url = 'http://'+IPAddress+':9000/trainerlist.php';
+
+     return fetch( url )
        .then((response) => response.json())
        .then((responseJson) => {
+         console.log(responseJson);
          this.setState({
            isLoading: false,
            dataSource: responseJson
          }, function() {
-           // In this block you can do something with new state.
          });
        })
        .catch((error) => {
@@ -59,7 +60,7 @@ FlatListItemSeparator = () => {
             renderItem={ ({item}) => <Text 
                 style={styles.FlatListItemStyle} 
                 onPress={() => {     
-                    this.props.navigation.navigate('Player', { vttlId: item.vttl_id });
+                    this.props.navigation.navigate('Trainer', { trainerId: item.vttl_id });
              }}>{item.firstname} {item.lastname}</Text>}
             keyExtractor={(item, index) => index}
          />

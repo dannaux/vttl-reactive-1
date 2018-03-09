@@ -3,7 +3,6 @@ import { Button, ImageBackground, Image, Text, View } from 'react-native';
 import Player from '../player/Player';
 import PlayerButton from '../common/PlayerButton';
 import { Styles } from '../style/Styles';
-import TrainerList from '../trainer/TrainerList';
 
 export default class PreferredPlayersScreen extends Component {
 

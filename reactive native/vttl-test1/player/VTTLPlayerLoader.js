@@ -1,6 +1,6 @@
 export default class VTTLPlayerLoader {
 
-  loadPlayer(uniqueIndex: String, callBackFunction, ) {
+  loadPlayer(uniqueIndex, callBackFunction, ) {
     var self = this;
     var soap = require('soap-everywhere');
     var url = 'http://api.vttl.be/0.7/?WSDL';

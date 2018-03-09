@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { TouchableOpacity, Text, View } from 'react-native'
-import { Styles } from '../style/Styles';
+import { playerStyles } from '../style/Styles';
 
 export default class PlayerButton extends Component {
 
@@ -18,10 +18,10 @@ export default class PlayerButton extends Component {
         return (
           <View>
             <TouchableOpacity
-              style={Styles.playerButtonView}
+              style={playerStyles.playerButtonView}
               onPress={self.onPress.bind(self)}
             >
-              <Text style={Styles.playerButtonText}> { self.props.title }</Text>
+              <Text style={playerStyles.playerButtonText}> { self.props.title }</Text>
             </TouchableOpacity>
            </View>
          )
