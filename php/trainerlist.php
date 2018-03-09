@@ -8,9 +8,15 @@ include 'DBConfig.php';
         die("Connection failed: " . $conn->connect_error);
     } 
     
-    $sql = "SELECT u.firstname, u.lastname, d.name, p.vttl_id  
-    FROM meerdaal.trainers t, meerdaal.users u, meerdaal.diplomas d, meerdaal.players p 
-    WHERE t.user_id = u.id AND t.diploma_id=d.id AND u.player_id = p.id ORDER BY d.id;";
+    $sql = "SELECT distinct players.vttl_id, users.firstname, users.lastname, diplomas.name, diplomas.id
+    FROM meerdaal.players, meerdaal.users, meerdaal.diplomas, meerdaal.trainers
+    INNER JOIN trainers_trainings on trainers.id = trainers_trainings.trainer_id
+    INNER JOIN trainings on trainings.id = trainers_trainings.training_id
+    WHERE trainers.user_id = users.id 
+    AND trainers.diploma_id=diplomas.id 
+    AND users.player_id = players.id
+    ORDER BY users.lastname, users.firstname;";
+
     
     $result = $conn->query($sql);
     
