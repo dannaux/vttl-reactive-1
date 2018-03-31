@@ -15,8 +15,6 @@ export default class TrainerScreen extends Component {
       const { params } = this.props.navigation.state;      
       const trainerId = params ? params.trainerId : null;
 
-      console.log( 'TrainerScreen: trainer id = '+trainerId);
-
       return (
         <ImageBackground source={require('../assets/batnet.jpg')} style={Styles.backgroundImage} >
           <View style={Styles.container}>

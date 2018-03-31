@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
 import { AppRegistry, StyleSheet, FlatList, Text, View, ScrollView, Alert, ActivityIndicator, Platform} from 'react-native';
-import { IPAddress } from '../common/Constants';
+import { IPAddress } from '../config/Constants';
+import DBTrainerLoader from './DBTrainerLoader';
 
 class TrainerList extends Component {
 
@@ -13,21 +14,15 @@ class TrainerList extends Component {
   }
 
   componentDidMount() {
-     url = 'http://'+IPAddress+':9000/trainerlist.php';
+      this.trainerLoader = new DBTrainerLoader();     
+      this.trainerLoader.loadTrainerList(this.trainerListLoaded.bind(this) );
+   }
 
-     return fetch( url )
-       .then((response) => response.json())
-       .then((responseJson) => {
-         console.log(responseJson);
-         this.setState({
-           isLoading: false,
-           dataSource: responseJson
-         }, function() {
-         });
-       })
-       .catch((error) => {
-         console.error(error);
-       });
+   trainerListLoaded(responseJson) {
+    this.setState({
+      isLoading: false,
+      dataSource: responseJson
+    });
    }
 
 FlatListItemSeparator = () => {

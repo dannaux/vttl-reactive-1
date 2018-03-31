@@ -1,19 +1,27 @@
-import { IPAddress } from '../common/Constants';
+import { IPAddress } from '../config/Constants';
 
 export default class DBTrainerLoader {
 
       loadTrainer(vttlId, callBackFunction) {
         url = 'http://'+IPAddress+':9000/trainer.php?vttlid='+vttlId;
+        this.loadURLAndPassToCallBackFunction(url, callBackFunction);
+      }
 
-        console.log( "Loading trainer from: "+url);
+      loadTrainerList(callBackFunction)  {
+        url = 'http://'+IPAddress+':9000/trainerlist.php';
+        this.loadURLAndPassToCallBackFunction(url, callBackFunction);
+      }
 
+      loadURLAndPassToCallBackFunction(url, callBackFunction) {
         return fetch( url )
-        .then((response) => response.json())
-        .then((responseJson) => {
+          .then((response) => response.json())
+          .then((responseJson) => {
+            console.log(url);
+            console.log(responseJson);
             callBackFunction(responseJson);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       }
 }
