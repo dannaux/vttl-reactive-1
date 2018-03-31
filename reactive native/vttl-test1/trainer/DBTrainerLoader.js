@@ -1,14 +1,15 @@
-import { IPAddress } from '../config/Constants';
+import { DBIPAddress } from '../config/Constants';
+import { DBPort } from '../config/Constants';
 
 export default class DBTrainerLoader {
 
       loadTrainer(vttlId, callBackFunction) {
-        url = 'http://'+IPAddress+':9000/trainer.php?vttlid='+vttlId;
+        url = this.createBaseUrl()+'trainer.php?vttlid='+vttlId;
         this.loadURLAndPassToCallBackFunction(url, callBackFunction);
       }
 
       loadTrainerList(callBackFunction)  {
-        url = 'http://'+IPAddress+':9000/trainerlist.php';
+        url = this.createBaseUrl()+'trainerlist.php';
         this.loadURLAndPassToCallBackFunction(url, callBackFunction);
       }
 
@@ -23,5 +24,13 @@ export default class DBTrainerLoader {
           .catch((error) => {
             console.error(error);
           });
+      }
+
+      createBaseUrl() {
+        baseUrl = 'http://'+DBIPAddress;
+        if ( DBPort ) {
+          baseUrl = baseUrl + ':' + DBPort;
+        }
+        return baseUrl + '/';
       }
 }
