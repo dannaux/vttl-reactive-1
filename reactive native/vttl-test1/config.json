@@ -5,16 +5,13 @@
     "sdkVersion": "25.0.0",
     "primaryColor": "#000000",
     "icon": "assets/meerdaal.png",
-    "androidStatusBar": {
-      "backgroundColor": "#3b81c7"
+    "androidStatusBar" : {
+      "backgroundColor" : "#3b81c7"
     },
     "splash": {
       "image": "assets/meerdaal.png",
-      "backgroundColor": "#3b81c7"
+      "backgroundColor" : "#3b81c7"
     },
-    "slug": "meerdaal",
-    "extra": {
-      "DBURL": "192.168.0.199:9000"
-    }
+    "slug": "meerdaal"
   }
 }

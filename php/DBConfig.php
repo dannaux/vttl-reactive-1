@@ -10,7 +10,7 @@ $DatabaseName = "meerdaal";
 $HostUser = "meerdaal";
  
 //Define your database password here.
-$HostPass = "9qB;n/73";
+$HostPass = "password";
  
 ?>
 

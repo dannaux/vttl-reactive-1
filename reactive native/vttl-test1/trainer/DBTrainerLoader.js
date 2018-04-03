@@ -1,5 +1,4 @@
-import { DBIPAddress } from '../config/Constants';
-import { DBPort } from '../config/Constants';
+import Constants from 'expo'
 
 export default class DBTrainerLoader {
 
@@ -27,10 +26,6 @@ export default class DBTrainerLoader {
       }
 
       createBaseUrl() {
-        baseUrl = 'http://'+DBIPAddress;
-        if ( DBPort ) {
-          baseUrl = baseUrl + ':' + DBPort;
-        }
-        return baseUrl + '/';
+        return 'http://' + Expo.Constants.manifest.extra.DBURL + '/';
       }
 }

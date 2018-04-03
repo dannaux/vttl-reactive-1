@@ -26,6 +26,11 @@ Find out about reactive to develop an app for table tennis
 >
 > › Press d to toggle development mode. (current mode: development)
 
+## To build
+
+1. run either `npm run env` or `npm run env:prod` to set properties for dev of production. This will insert 'extra' properties in app.json. 
+2. run `npm build` ?? TBD
+
 ## Troubleshooting
 
 * If you are running into trouble with watchman, issue the following command

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
 import { AppRegistry, StyleSheet, FlatList, Text, View, ScrollView, Alert, ActivityIndicator, Platform} from 'react-native';
-import { IPAddress } from '../config/Constants';
 import DBTrainerLoader from './DBTrainerLoader';
 
 class TrainerList extends Component {
