@@ -21,6 +21,7 @@ export default class DBTrainerLoader {
             callBackFunction(responseJson);
           })
           .catch((error) => {
+            console.error("Could not connect to "+ url );
             console.error(error);
           });
       }

@@ -11,10 +11,14 @@ export default class HomeScreen extends Component {
 
     render() {
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <HomeButton target="PreferredPlayers" title="Dannaux"/>
-          <HomeButton target="TrainerList" title="Trainers"/>
-        </View>
+        <ImageBackground source={require('../assets/batnet.jpg')} style={Styles.backgroundImage} >        
+          <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-around' }}>
+            <View style={{ flex: 0.3, flexDirection: 'row', justifyContent: 'space-around' }}>
+              <HomeButton target="PreferredPlayers" title="Favorieten"/>
+              <HomeButton target="TrainerList" title="Trainers"/>
+            </View>
+          </View>
+        </ImageBackground>
       );
     }
 }

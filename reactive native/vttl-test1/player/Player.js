@@ -39,7 +39,7 @@ export default class Player extends Component {
       var maxMatches = Math.max(...numberMatches);
       var totalMatches = numberMatches.reduce( (a,b) => a+b, 0 );
      return (
-       <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
+       <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20, paddingBottom: 10}}>
          <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
            <ImageWithDefault
              style={{width: 200, height: 200, borderWidth: 2, borderColor: 'white', borderRadius: 5}}

@@ -2,19 +2,21 @@ import { StyleSheet } from 'react-native';
 
 export const Styles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: 'column', 
     alignItems: 'stretch', 
-    marginTop: 30, 
+    marginTop: 10, 
     marginLeft: 5, 
     marginRight: 5, 
     marginBottom: 5, 
-    backgroundColor: '#ffffffd0', 
+    backgroundColor: '#ffffffa0', 
     borderRadius: 10 
   },
   backgroundImage: {
     flex: 1,
   },
   homebutton: {
+    flex: 0.70,
     borderRadius: 10,
     backgroundColor: '#3385ffe0',
     width: 120,
@@ -22,7 +24,7 @@ export const Styles = StyleSheet.create({
     borderWidth: 2, 
     borderColor: 'white',
     marginTop: 10,
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
   },
   homeButtonText: {
     fontSize: 20,
