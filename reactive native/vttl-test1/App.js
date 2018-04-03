@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { StackNavigator } from 'react-navigation';
-import PreferredPlayersScreen from './screens/PreferredPlayersScreen';
+import PlayerListScreen from './screens/PlayerListScreen';
 import HomeScreen from './screens/Homescreen';
 import TrainerListScreen from './screens/TrainerListScreen';
 import PlayerScreen from './screens/PlayerScreen';
@@ -10,7 +10,7 @@ import TrainerScreen from './screens/TrainerScreen';
 const RootStack = StackNavigator(
   {
     Home: { screen: HomeScreen },
-    PreferredPlayers: { screen: PreferredPlayersScreen },
+    PreferredPlayers: { screen: PlayerListScreen },
     Player: { screen: PlayerScreen },
     TrainerList: { screen: TrainerListScreen },
     Trainer: { screen: TrainerScreen },

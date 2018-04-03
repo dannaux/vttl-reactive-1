@@ -13,12 +13,14 @@ export default class PlayerScreen extends Component {
       var self = this;
 
       const { params } = this.props.navigation.state;      
-      const vttlId = params ? params.vttlId : null;
+      const playerId = params ? params.playerId : null;
+      console.log(params);
+
 
       return (
         <ImageBackground source={require('../assets/batnet.jpg')} style={Styles.backgroundImage} >
           <View style={Styles.container}>
-            <Player playerId={vttlId}/>
+            <Player playerId={playerId}/>
           </View>
         </ImageBackground>
       );
