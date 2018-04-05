@@ -9,7 +9,7 @@ include 'DBConfig.php';
     } 
     
     $sql = "SELECT distinct players.vttl_id, users.firstname, users.lastname, diplomas.name, diplomas.id
-    FROM meerdaal.players, meerdaal.users, meerdaal.diplomas, meerdaal.trainers
+    FROM players, users, diplomas, trainers
     INNER JOIN trainers_trainings on trainers.id = trainers_trainings.trainer_id
     INNER JOIN trainings on trainings.id = trainers_trainings.training_id
     WHERE trainers.user_id = users.id 

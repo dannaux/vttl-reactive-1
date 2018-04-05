@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
-import { Button, FlatList, Image, ScrollView, Text, View } from 'react-native';
+import { Button, FlatList, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import { playerStyles, trainerStyles } from '../style/Styles';
 import ImageWithDefault from '../common/ImageWithDefault';
 import FlatListItemSeparator from '../common/FlatListItemSeparator';
 import { Styles } from '../style/Styles';
-import DBTrainerLoader from './DBTrainerLoader';
+import DBTrainerLoader from '../db/DBTrainerLoader';
 import Constants from 'expo';
 import DateUtil from '../common/DateUtil'
 
-export default class Trainer extends Component {
+class Trainer extends Component {
 
   constructor(props) {
     super(props);
@@ -58,6 +59,9 @@ export default class Trainer extends Component {
               ItemSeparatorComponent = {FlatListItemSeparator}
               renderItem={ ({item}) => <Text 
                   style={this.renderTrainingStyle(item)} 
+                  onPress={() => {     
+                    this.props.navigation.navigate('Training', { trainingId: item.id });
+                  }}
                 >{this.renderTrainingText(item)}</Text>}
               keyExtractor={(item, index) => index}
           />
@@ -79,7 +83,14 @@ export default class Trainer extends Component {
   }
 
   renderTrainingStyle(training) {
-    return Styles.flatListItem;
+    var d = new Date();
+    var n = d.getDay();
+    if ( Math.abs((n - training.day))  > 1 ) {
+      return Styles.flatListItem;
+    }
+    else {
+      return StyleSheet.flatten([Styles.flatListItem, Styles.selectStyle]);
+    }
   }
 
   createImageURL(userId) {
@@ -87,3 +98,4 @@ export default class Trainer extends Component {
   }
 }
 
+export default withNavigation(Trainer);

@@ -8,11 +8,11 @@ include 'DBConfig.php';
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $vttlid = $_GET['vttlid'];
+    $vttlid = $_GET['vttlId'];
 
 
     function getTrainings($conn, $vttlid) {
-        $sql = "SELECT trainings.name, trainings.day, 
+        $sql = "SELECT trainings.id, trainings.name, trainings.day, 
         date_format(trainings.start, '%k:%i') as start, 
         date_format(trainings.stop, '%k:%i') as stop, 
         trainings.from, trainings.to 

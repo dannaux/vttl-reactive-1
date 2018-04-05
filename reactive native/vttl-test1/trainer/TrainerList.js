@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
 import { AppRegistry, StyleSheet, FlatList, Text, View, ScrollView, Alert, ActivityIndicator, Platform} from 'react-native';
-import DBTrainerLoader from './DBTrainerLoader';
+import DBTrainerLoader from '../db/DBTrainerLoader';
 import FlatListItemSeparator from '../common/FlatListItemSeparator';
 import { Styles } from '../style/Styles';
 

@@ -5,6 +5,7 @@ import HomeScreen from './screens/Homescreen';
 import TrainerListScreen from './screens/TrainerListScreen';
 import PlayerScreen from './screens/PlayerScreen';
 import TrainerScreen from './screens/TrainerScreen';
+import TrainingScreen from './screens/TrainingScreen';
 
 
 const RootStack = StackNavigator(
@@ -14,6 +15,7 @@ const RootStack = StackNavigator(
     Player: { screen: PlayerScreen },
     TrainerList: { screen: TrainerListScreen },
     Trainer: { screen: TrainerScreen },
+    Training: { screen: TrainingScreen },
   },
   { initialRouteName: 'Home', }
 );

@@ -38,6 +38,15 @@ Identificatie:
 * diploma
 
 ### Trainingen
+* oplijsten per trainer
+* sessies oplijsten per training, OF per trainer
+* trainingen van deze week oplijsten
+* door alle sessies van een training laten scrollen. Laatste 2 trainingen voor vandaag zijn editeerbaar. Rest niet. 
+* tonen wie er was op een training
+
+Nu niet mogelijk:
+* tonen wie er zou moeten zijn op een training.
+* aangeven wie er op een training zou moeten zijn. 
 
 ## NFRs
 

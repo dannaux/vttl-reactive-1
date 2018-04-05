@@ -43,6 +43,9 @@ export const Styles = StyleSheet.create({
     marginTop: 1,
     marginBottom: 1
   },
+  selectStyle: {
+    backgroundColor : "#5dd55dbf"
+  }
 });
 
 export const playerStyles = StyleSheet.create({

@@ -15,7 +15,7 @@
     },
     "slug": "meerdaal",
     "extra": {
-      "DBURL": "www.dannaux-consulting.be/dev/vttl/app/php",
+      "DBURL": "192.168.0.99:9000",
       "UserImagesBaseURL": "http://www.meerdaal.be//system/users/"
     }
   }
