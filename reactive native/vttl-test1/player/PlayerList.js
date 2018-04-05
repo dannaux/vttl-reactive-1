@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
 import { AppRegistry, StyleSheet, FlatList, Text, View, ScrollView, Alert, ActivityIndicator, Platform} from 'react-native';
+import FlatListItemSeparator from '../common/FlatListItemSeparator';
 
 class TrainerList extends Component {
 
@@ -47,18 +48,6 @@ class TrainerList extends Component {
     });
    }
 
-FlatListItemSeparator = () => {
-    return (
-      <View
-        style={{
-          height: 1,
-          width: "100%",
-          backgroundColor: "#607D8B",
-        }}
-      />
-    );
-  }
-
   render() {
     var self = this;
     if (this.state.isLoading) {
@@ -75,7 +64,7 @@ FlatListItemSeparator = () => {
       <ScrollView>
          <FlatList
             data={ self.state.players }
-            ItemSeparatorComponent = {this.FlatListItemSeparator}
+            ItemSeparatorComponent = {FlatListItemSeparator}
             renderItem={ ({item}) => <Text 
                 style={styles.FlatListItemStyle} 
                 onPress={() => {     
