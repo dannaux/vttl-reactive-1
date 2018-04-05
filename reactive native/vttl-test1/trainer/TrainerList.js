@@ -3,6 +3,7 @@ import { withNavigation } from 'react-navigation';
 import { AppRegistry, StyleSheet, FlatList, Text, View, ScrollView, Alert, ActivityIndicator, Platform} from 'react-native';
 import DBTrainerLoader from './DBTrainerLoader';
 import FlatListItemSeparator from '../common/FlatListItemSeparator';
+import { Styles } from '../style/Styles';
 
 class TrainerList extends Component {
 
@@ -35,13 +36,15 @@ class TrainerList extends Component {
       );
     }
 
+    console.log(Styles.flatListItem);
+
     return (
       <ScrollView>
          <FlatList
             data={ self.state.dataSource }
             ItemSeparatorComponent = {FlatListItemSeparator}
             renderItem={ ({item}) => <Text 
-                style={styles.FlatListItemStyle} 
+                style={Styles.flatListItem} 
                 onPress={() => {     
                     this.props.navigation.navigate('Trainer', { trainerId: item.vttl_id });
              }}>{item.firstname} {item.lastname}</Text>}
@@ -53,20 +56,3 @@ class TrainerList extends Component {
 }
 
 export default withNavigation(TrainerList);
-
-const styles = StyleSheet.create({
-
-MainContainer :{
-  justifyContent: 'center',
-  flex:1,
-  margin: 10,
-  paddingTop: (Platform.OS === 'ios') ? 20 : 0,
-},
-
-FlatListItemStyle: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-    backgroundColor: '#ffffffd0'
-  },
-});

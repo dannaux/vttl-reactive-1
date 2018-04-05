@@ -31,7 +31,13 @@ export const Styles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
     color: '#ffffff'
-  }
+  },
+  flatListItem: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+    backgroundColor: '#ffffffd0'
+  },
 });
 
 export const playerStyles = StyleSheet.create({
