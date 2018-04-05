@@ -43,7 +43,7 @@ export default class Trainer extends Component {
        <View style={{flex: 1, flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
          <View style={{flex: 0.4, flexDirection: 'row', marginTop: 10, marginBottom: 10}}>
            <ImageWithDefault
-             style={{ width: 150, borderWidth: 2, borderColor: 'white', borderRadius: 5}}
+             style={{ flex: 0.4, borderWidth: 2, borderColor: 'white', borderRadius: 5}}
             source={{uri: imageUrl }}
             />
             <View style={{flex: 0.8, flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
