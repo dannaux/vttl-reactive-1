@@ -32,8 +32,8 @@ include 'DBConfig.php';
     }
 
     function getTrainerInfo($conn, $vttlid) {
-        $sql = "SELECT p.vttl_id, u.firstname, u.lastname, d.name as diploma, u.photo_file_name as imageUrl  
-                FROM meerdaal.trainers t, meerdaal.users u, meerdaal.diplomas d, meerdaal.players p 
+        $sql = "SELECT p.vttl_id, u.id, u.firstname, u.lastname, d.name as diploma, u.photo_file_name as imageUrl  
+                FROM trainers t, users u, diplomas d, players p 
                 WHERE t.user_id = u.id AND t.diploma_id=d.id AND u.player_id = p.id and p.vttl_id = '$vttlid';";
         
         $result = $conn->query($sql);

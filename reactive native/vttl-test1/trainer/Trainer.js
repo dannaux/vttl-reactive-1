@@ -3,6 +3,7 @@ import { Text, View, Image, Button } from 'react-native';
 import { playerStyles, trainerStyles } from '../style/Styles';
 import ImageWithDefault from '../common/ImageWithDefault';
 import DBTrainerLoader from './DBTrainerLoader';
+import Constants from 'expo';
 
 export default class Trainer extends Component {
 
@@ -32,15 +33,17 @@ export default class Trainer extends Component {
 
   render() {
     var self = this;
+
     if ( this.state.trainerLoaded == true ) {
-     return (
+      var imageUrl = this.createImageURL( self.trainer.info.id );
+      return (
        <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
-         <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
+         <View style={{flex: 1, flexDirection: 'row', marginTop: 10}}>
            <ImageWithDefault
              style={{width: 200, height: 200, borderWidth: 2, borderColor: 'white', borderRadius: 5}}
-            source={{uri: self.trainer.info.imageUrl }}
+            source={{uri: imageUrl }}
             />
-            <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
+            <View style={{flex: 0.8, flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
              <Text style={playerStyles.playerName}>{self.trainer.info.lastname}</Text>
              <Text style={playerStyles.playerName}>{self.trainer.info.firstname}</Text>
              <Text style={trainerStyles.diploma}>{self.trainer.info.diploma}</Text>
@@ -56,6 +59,10 @@ export default class Trainer extends Component {
         </View>
       );
     }
+  }
+
+  createImageURL(userId) {
+    return Expo.Constants.manifest.extra.UserImagesBaseURL + userId + '.jpg';    
   }
 }
 

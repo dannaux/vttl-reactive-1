@@ -5,7 +5,6 @@
     "sdkVersion": "25.0.0",
     "primaryColor": "#000000",
     "icon": "assets/meerdaal_red.png",
-    "orientation": "portrait",
     "androidStatusBar": {
       "backgroundColor": "#3b81c7"
     },
@@ -15,7 +14,8 @@
     },
     "slug": "meerdaal",
     "extra": {
-      "DBURL": "www.dannaux-consulting.be/dev/vttl/app/php"
+      "DBURL": "192.168.0.99:9000",
+      "UserImagesBaseURL": "http://www.meerdaal.be//system/users/"
     }
   }
 }

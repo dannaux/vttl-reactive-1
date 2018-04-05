@@ -16,8 +16,6 @@ export default class DBTrainerLoader {
         return fetch( url )
           .then((response) => response.json())
           .then((responseJson) => {
-            console.log(url);
-            console.log(responseJson);
             callBackFunction(responseJson);
           })
           .catch((error) => {
