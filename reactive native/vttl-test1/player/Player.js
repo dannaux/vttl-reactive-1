@@ -42,7 +42,7 @@ export default class Player extends Component {
        <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20, paddingBottom: 10}}>
          <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
            <ImageWithDefault
-             style={{width: 200, height: 200, borderWidth: 2, borderColor: 'white', borderRadius: 5}}
+             style={{width: 150, height: 150, borderWidth: 2, borderColor: 'white', borderRadius: 5}}
             source={{uri: this.playerImageUri}}
             />
             <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>

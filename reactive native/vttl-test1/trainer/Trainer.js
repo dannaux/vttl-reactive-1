@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
-import { Text, View, Image, Button } from 'react-native';
+import { Button, FlatList, Image, ScrollView, Text, View } from 'react-native';
 import { playerStyles, trainerStyles } from '../style/Styles';
 import ImageWithDefault from '../common/ImageWithDefault';
+import FlatListItemSeparator from '../common/FlatListItemSeparator';
+import { Styles } from '../style/Styles';
 import DBTrainerLoader from './DBTrainerLoader';
 import Constants from 'expo';
+import DateUtil from '../common/DateUtil'
 
 export default class Trainer extends Component {
 
@@ -37,10 +40,10 @@ export default class Trainer extends Component {
     if ( this.state.trainerLoaded == true ) {
       var imageUrl = this.createImageURL( self.trainer.info.id );
       return (
-       <View style={{flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
-         <View style={{flex: 1, flexDirection: 'row', marginTop: 10}}>
+       <View style={{flex: 1, flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
+         <View style={{flex: 0.4, flexDirection: 'row', marginTop: 10, marginBottom: 10}}>
            <ImageWithDefault
-             style={{width: 200, height: 200, borderWidth: 2, borderColor: 'white', borderRadius: 5}}
+             style={{ width: 150, borderWidth: 2, borderColor: 'white', borderRadius: 5}}
             source={{uri: imageUrl }}
             />
             <View style={{flex: 0.8, flexDirection: 'column', alignItems: 'stretch', marginLeft: 20}}>
@@ -49,6 +52,16 @@ export default class Trainer extends Component {
              <Text style={trainerStyles.diploma}>{self.trainer.info.diploma}</Text>
            </View>
          </View>
+         <ScrollView>
+          <FlatList
+              data={ self.trainer.trainings }
+              ItemSeparatorComponent = {FlatListItemSeparator}
+              renderItem={ ({item}) => <Text 
+                  style={this.renderTrainingStyle(item)} 
+                >{this.renderTrainingText(item)}</Text>}
+              keyExtractor={(item, index) => index}
+          />
+         </ScrollView>
        </View>
      );
     }
@@ -59,6 +72,14 @@ export default class Trainer extends Component {
         </View>
       );
     }
+  }
+
+  renderTrainingText(training) {
+    return DateUtil.dayOfTheWeek(training.day) + " " + training.start + "-" + training.stop + ": "+ training.name;
+  }
+
+  renderTrainingStyle(training) {
+    return Styles.flatListItem;
   }
 
   createImageURL(userId) {

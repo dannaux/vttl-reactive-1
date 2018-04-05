@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Meerdaal",
+    "version": "0.1",
+    "sdkVersion": "25.0.0",
+    "primaryColor": "#000000",
+    "icon": "assets/meerdaal_red.png",
+    "orientation": "portrait",
+    "androidStatusBar": {
+      "backgroundColor": "#3b81c7"
+    },
+    "splash": {
+      "image": "assets/meerdaal_white.png",
+      "backgroundColor": "#3b81c7"
+    },
+    "slug": "meerdaal",
+    "extra": {
+      "DBURL": "www.dannaux-consulting.be/dev/vttl/app/php",
+      "UserImagesBaseURL": "http://www.meerdaal.be//system/users/"
+    }
+  }
+}

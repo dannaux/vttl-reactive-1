@@ -12,12 +12,16 @@ include 'DBConfig.php';
 
 
     function getTrainings($conn, $vttlid) {
-        $sql = "SELECT trainings.* FROM users, players, trainers
+        $sql = "SELECT trainings.name, trainings.day, 
+        date_format(trainings.start, '%k:%i') as start, 
+        date_format(trainings.stop, '%k:%i') as stop, 
+        trainings.from, trainings.to 
+        FROM users, players, trainers
         JOIN trainers_trainings ON trainers_trainings.trainer_id = trainers.id
         JOIN trainings ON trainers_trainings.training_id = trainings.id
         WHERE trainers.user_id = users.id
         AND users.player_id = players.id
-        AND players.vttl_id = '$vttlid';";
+        AND players.vttl_id = '$vttlid' ORDER BY day, start;";
         
         $result = $conn->query($sql);
         

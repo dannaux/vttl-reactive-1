@@ -8,6 +8,8 @@ export default class FlatListItemSeparator extends Component {
             style={{
                 height: 1,
                 width: "100%",
+                marginLeft: 10,
+                marginRight: 10,
                 backgroundColor: "#607D8B",
             }}
             />

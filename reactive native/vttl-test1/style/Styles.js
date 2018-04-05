@@ -36,7 +36,12 @@ export const Styles = StyleSheet.create({
     padding: 10,
     fontSize: 18,
     height: 44,
-    backgroundColor: '#ffffffd0'
+    backgroundColor: '#ffffffd0',
+    borderRadius: 5,
+    marginRight: 5,
+    marginLeft: 5,
+    marginTop: 1,
+    marginBottom: 1
   },
 });
 
