@@ -28,7 +28,7 @@ Find out about reactive to develop an app for table tennis
 
 ## To build
 
-1. run either `npm run env` or `npm run env:prod` to set properties for dev of production. This will insert 'extra' properties in app.json. 
+1. run either `npm run env`, `npm run env:staging` or `npm run env:production` to set properties for dev of production. This will copy config.json to app.json and insert 'extra' properties in app.json, depending on the environment. 
 2. run `npm build` ?? TBD
 
 ## Troubleshooting

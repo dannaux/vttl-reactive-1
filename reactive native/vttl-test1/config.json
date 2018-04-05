@@ -4,12 +4,13 @@
     "version": "0.1",
     "sdkVersion": "25.0.0",
     "primaryColor": "#000000",
-    "icon": "assets/meerdaal.png",
+    "icon": "assets/meerdaal_red.png",
+    "orientation": "portrait",
     "androidStatusBar" : {
       "backgroundColor" : "#3b81c7"
     },
     "splash": {
-      "image": "assets/meerdaal.png",
+      "image": "assets/meerdaal_white.png",
       "backgroundColor" : "#3b81c7"
     },
     "slug": "meerdaal"
