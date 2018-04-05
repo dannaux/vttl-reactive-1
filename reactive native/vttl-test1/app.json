@@ -12,6 +12,7 @@
       "image": "assets/meerdaal_white.png",
       "backgroundColor": "#3b81c7"
     },
+    "orientation" : "portrait",
     "slug": "meerdaal",
     "extra": {
       "DBURL": "192.168.0.99:9000",
