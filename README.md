@@ -15,6 +15,9 @@ Find out about reactive to develop an app for table tennis
 > `sudo sysctl -w fs.inotify.max_user_watches=12288`
 >
 > `sudo sysctl -w fs.inotify.max_queued_events=9999`
+
+This can also be done by editing /etc/sysctl.conf (note that this file may be regenerated when Ubuntu is updated?)
+
 5. Open your app in the [Expo app](https://expo.io/) using the QR code produced on the console line.
 > Note that these are handy at any time:
 >
